@@ -1,1 +1,41 @@
-<p>skills works!</p>
+<section class="py-4 px-4 min-h-screen bg-gradient-to-br from-[#1976d2] via-[#e3f2fd] to-[#ffbc00] text-center" id="skills">
+  <h2 class="text-4xl font-bold mb-10 text-gray-800 drop-shadow-lg">Skills</h2>
+  <div class="flex justify-center gap-16 flex-wrap items-start">
+    <!-- Languages Card -->
+    <div
+      class="flex-1 min-w-[300px] bg-white p-8 rounded-3xl shadow-2xl transition-transform duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-[0_12px_32px_rgba(25,118,210,0.15)] h-auto"
+      (click)="toggle('languages')"
+    >
+      <h3 class="text-2xl font-semibold text-[#1976d2] mb-4 drop-shadow">Languages</h3>
+      <div
+        class="max-h-0 overflow-hidden grid grid-cols-[repeat(auto-fit,minmax(80px,1fr))] gap-6 transition-all duration-500"
+        [ngClass]="{'max-h-[500px] pt-4': expandedSection === 'languages'}"
+      >
+        <ng-container *ngFor="let lang of languages">
+          <div class="flex flex-col items-center bg-gradient-to-br from-[#e3f2fd] to-[#bbdefb] rounded-xl p-4 shadow-md hover:scale-105 transition-transform duration-300">
+            <img [src]="lang.icon" [alt]="lang.name" class="w-12 h-12 object-contain drop-shadow-lg" />
+            <span class="text-base mt-2 font-medium text-gray-700">{{ lang.name }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <!-- Tools Card -->
+    <div
+      class="flex-1 min-w-[300px] bg-white p-8 rounded-3xl shadow-2xl transition-transform duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-[0_12px_32px_rgba(25,118,210,0.15)] h-auto"
+      (click)="toggle('tools')"
+    >
+      <h3 class="text-2xl font-semibold text-[#1976d2] mb-4 drop-shadow">Tools</h3>
+      <div
+        class="max-h-0 overflow-hidden grid grid-cols-[repeat(auto-fit,minmax(80px,1fr))] gap-6 transition-all duration-500"
+        [ngClass]="{'max-h-[500px] pt-4': expandedSection === 'tools'}"
+      >
+        <ng-container *ngFor="let tool of tools">
+          <div class="flex flex-col items-center bg-gradient-to-br from-[#e3f2fd] to-[#bbdefb] rounded-xl p-4 shadow-md hover:scale-105 transition-transform duration-300">
+            <img [src]="tool.icon" [alt]="tool.name" class="w-12 h-12 object-contain drop-shadow-lg" />
+            <span class="text-base mt-2 font-medium text-gray-700">{{ tool.name }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</section>
