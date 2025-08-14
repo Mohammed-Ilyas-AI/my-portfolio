@@ -1,0 +1,39 @@
+<nav class="fixed top-0 left-0 w-full bg-white dark:bg-dark shadow z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a routerLink="/" class="text-primary font-bold text-lg">
+        Mohammed Ilyas
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-6">
+        <a routerLink="/" routerLinkActive="text-secondary" class="hover:text-secondary">Home</a>
+        <a routerLink="/about" routerLinkActive="text-secondary" class="hover:text-secondary">About</a>
+        <a routerLink="/projects" routerLinkActive="text-secondary" class="hover:text-secondary">Projects</a>
+        <a routerLink="/skills" routerLinkActive="text-secondary" class="hover:text-secondary">Skills</a>
+        <a routerLink="/contact" routerLinkActive="text-secondary" class="hover:text-secondary">Contact</a>
+      </div>
+
+      <!-- Right Icons -->
+      <div class="flex items-center space-x-4">
+        <button (click)="toggleDarkMode()" class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">
+          <span *ngIf="!isDarkMode">🌙</span>
+          <span *ngIf="isDarkMode">☀️</span>
+        </button>
+        <button (click)="toggleMenu()" class="md:hidden p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">
+          ☰
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div *ngIf="isMenuOpen" class="md:hidden bg-white dark:bg-dark border-t">
+    <a routerLink="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Home</a>
+    <a routerLink="/about" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">About</a>
+    <a routerLink="/projects" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Projects</a>
+    <a routerLink="/skills" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Skills</a>
+    <a routerLink="/contact" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
+  </div>
+</nav>
