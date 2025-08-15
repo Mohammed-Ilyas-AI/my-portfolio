@@ -1,0 +1,90 @@
+.car-move {
+  animation: carMove 10s ease-in-out forwards;
+}
+
+.car-move .bg-gradient-to-r {
+  animation: headlightBeam 10s ease-in-out forwards;
+}
+
+.wheel-spin {
+  animation: wheelSpin 1s linear infinite;
+}
+
+.smoke-rise {
+  animation: smokeRise 2s ease-in-out infinite;
+}
+
+.fade-in-letter {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeInText 7s ease forwards;
+}
+
+@keyframes carMove {
+  0% {
+    transform: translateX(-40%);
+  }
+
+  50% {
+    transform: translateX(40%);
+  }
+
+  100% {
+    transform: translateX(80vw);
+  }
+}
+
+@keyframes wheelSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes headlightBeam {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes smokeRise {
+  0% {
+    transform: scale(0.5) translateY(0);
+    opacity: .8;
+  }
+
+  50% {
+    transform: scale(1) translateY(-10px);
+    opacity: .4;
+  }
+
+  100% {
+    transform: scale(1.5) translateY(-22px);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+

@@ -1,0 +1,46 @@
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black text-white overflow-hidden">
+  <div class="relative flex items-center">
+    <!-- Car animation -->
+    <div class="absolute left-0 flex items-center car-move">
+      <!-- body -->
+      <div class="relative w-28 h-10 bg-red-600 rounded-lg shadow-[0_2px_6px_rgba(220,38,38,0.6)]">
+        <!-- window -->
+        <div class="absolute -top-5 left-8 w-10 h-5 bg-white rounded-sm"></div>
+        <!-- headlight block -->
+        <div class="absolute right-[-14px] top-2 w-5 h-2 bg-yellow-400 rounded-sm"></div>
+        <!-- headlight beam -->
+        <div
+          class="pointer-events-none absolute right-[-10px] top-1 w-28 h-4 bg-gradient-to-r from-yellow-400/70 to-transparent blur-sm rounded">
+        </div>
+
+        <!-- wheels -->
+        <div class="absolute bottom-[-10px] left-2 w-5 h-5 bg-neutral-900 rounded-full wheel-spin">
+          <div class="m-auto mt-[6px] w-1.5 h-1.5 bg-neutral-700 rounded-full"></div>
+        </div>
+        <div class="absolute bottom-[-10px] left-[72px] w-5 h-5 bg-neutral-900 rounded-full wheel-spin">
+          <div class="m-auto mt-[6px] w-1.5 h-1.5 bg-neutral-700 rounded-full"></div>
+        </div>
+
+        <!-- exhaust smoke puffs -->
+        <div class="absolute left-[-14px] bottom-[-6px] w-2.5 h-2.5 bg-gray-300/80 rounded-full smoke-rise"></div>
+        <div class="absolute left-[-18px] bottom-[-10px] w-2.5 h-2.5 bg-gray-300/70 rounded-full smoke-rise"
+          style="animation-delay:.5s"></div>
+        <div class="absolute left-[-22px] bottom-[-14px] w-2.5 h-2.5 bg-gray-300/60 rounded-full smoke-rise"
+          style="animation-delay:1s"></div>
+      </div>
+    </div>
+
+    <!-- Text with letter-by-letter fade -->
+    <h1 class="mt-40 text-6xl font-extrabold tracking-wide text-center">
+      <span *ngFor="let char of textArray; let i = index" [style.animationDelay]="(i * 0.3) + 's'"
+        class="fade-in-letter">
+        {{ char === ' ' ? '\u00A0' : char }}
+      </span>
+    </h1>
+
+    <!-- Hidden iframe to play sound -->
+    <iframe *ngIf="playSound" width="0" height="0" style="display: none" src="../../../assets/sounds/car-sounds.html"
+      allow="autoplay">
+    </iframe>
+  </div>
+</div>
