@@ -1,15 +1,31 @@
 import { Routes } from '@angular/router';
-import { AboutComponent } from './features/about/about.component';
-import { ContactComponent } from './features/contact/contact.component';
-import { HomeComponent } from './features/home/home.component';
-import { ProjectsComponent } from './features/projects/projects.component';
-import { SkillsComponent } from './features/skills/skills.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'projects', component: ProjectsComponent },
-  { path: 'skills', component: SkillsComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {
+    path: 'home',
+    loadComponent: () => import('./features/home/home.component')
+      .then(m => m.HomeComponent)
+  },
+  {
+    path: 'about',
+    loadComponent: () => import('./features/about/about.component')
+      .then(m => m.AboutComponent)
+  },
+  {
+    path: 'projects',
+    loadComponent: () => import('./features/projects/projects.component')
+      .then(m => m.ProjectsComponent)
+  },
+  {
+    path: 'skills',
+    loadComponent: () => import('./features/skills/skills.component')
+      .then(m => m.SkillsComponent)
+  },
+  {
+    path: 'contact',
+    loadComponent: () => import('./features/contact/contact.component')
+      .then(m => m.ContactComponent)
+  },
   { path: '**', redirectTo: '' },
 ];
