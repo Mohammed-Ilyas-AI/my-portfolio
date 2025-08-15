@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Car Sound</title>
+</head>
+
+<body>
+  <audio id="carAudio" autoplay muted>
+    <source src="car-start.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    const audio = document.getElementById('carAudio');
+    audio.play().then(() => {
+      audio.muted = false;
+    });
+    setTimeout(() => {
+      audio.pause();
+      audio.currentTime = 0;
+    }, 10000); // Stop after 10 seconds
+  </script>
+</body>
+
+</html>
