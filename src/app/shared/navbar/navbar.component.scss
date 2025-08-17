@@ -1,0 +1,146 @@
+/* Variables + base align with your original */
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --secondary: #06b6d4;
+  --accent: #a855f7;
+  --dark-bg: #111827;
+  --darker-bg: #030712;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --navbar-bg: rgba(17, 24, 39, 0.7);
+  --glass-effect: blur(12px);
+  --transition-normal: all 0.3s ease;
+  --border-glow: rgba(99, 102, 241, 0.3);
+  --neon-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+  --glow-cyan: 0 0 15px rgba(6, 182, 212, 0.5);
+  --glow-indigo: 0 0 15px rgba(99, 102, 241, 0.5);
+  --glow-purple: 0 0 15px rgba(168, 85, 247, 0.5);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth scroll + offset for fixed navbar */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Custom Scrollbar (optional) */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--dark-bg); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--primary), var(--accent));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--primary-dark), var(--accent));
+}
+
+/* Navbar styles */
+#navbar {
+  background-color: var(--navbar-bg);
+  backdrop-filter: var(--glass-effect);
+  -webkit-backdrop-filter: var(--glass-effect);
+  border-bottom: 1px solid var(--border-glow);
+  transition: var(--transition-normal);
+  height: 70px;
+}
+#navbar.scrolled {
+  padding: 0.5rem 0;
+  background-color: rgba(17, 24, 39, 0.9);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation links + underline */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, rgb(6, 182, 212), rgb(99, 102, 241));
+  transition: width 0.3s ease;
+  transform: translateX(-50%);
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 80%;
+}
+.nav-link:hover {
+  color: var(--secondary);
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+}
+.nav-link.active {
+  color: var(--secondary);
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+}
+.mobile-nav-link.active {
+  color: var(--secondary);
+  background: rgba(31, 41, 55, 0.5);
+}
+
+/* Mobile menu: JS-driven height transition */
+#mobile-menu {
+  overflow: hidden;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hamburger animation */
+#line1, #line2, #line3 {
+  transition: transform 0.3s ease, opacity 0.2s ease, background-color 0.3s ease;
+  transform-origin: center;
+}
+#mobile-menu-button.active #line1 {
+  transform: translateY(6px) rotate(45deg);
+}
+#mobile-menu-button.active #line2 {
+  opacity: 0;
+}
+#mobile-menu-button.active #line3 {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Section reveal + highlight for IntersectionObserver */
+section.section-hidden {
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(2px);
+  transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+}
+section.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+.section-highlight {
+  box-shadow: inset 0 0 0 2px rgba(6, 182, 212, 0.35),
+              0 0 40px rgba(6, 182, 212, 0.12);
+  transition: box-shadow 1s ease;
+}
+
+/* Focus visibility */
+a:focus, button:focus {
+  outline: 2px solid rgba(6, 182, 212, 0.5);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Responsive touch-ups */
+@media (max-width: 767px) {
+  #navbar { height: auto; }
+  .nav-link::after { display: none; }
+}
